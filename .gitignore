@@ -1,5 +1,5 @@
 # created by virtualenv automatically
-.idea/
+.idea
 
 # Django #
 *.log
@@ -9,5 +9,6 @@ __pycache__
 db.sqlite3
 media
 
-venv/
+venv
+
 .env

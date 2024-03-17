@@ -1,3 +1,4 @@
+from environ import Env
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5', # bootstrap 추가
     'chatbot', # app 추가
 ]
 
@@ -65,7 +67,7 @@ WSGI_APPLICATION = 'Lawyer_Chatbot.wsgi.application'
 # environ db 적용
 import environ
 env = environ.Env()
-environ.Env.read_env()
+environ.Env.read_env(BASE_DIR / '.env')
 
 DATABASES = {
     'default': {
@@ -73,8 +75,8 @@ DATABASES = {
         'NAME': env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
@@ -119,3 +121,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# bootstrap 추천 설정
+BOOTSTRAP5 = {
+    "required_css_classes": "fw-bold",
+    "set_placeholder": False,
+}
