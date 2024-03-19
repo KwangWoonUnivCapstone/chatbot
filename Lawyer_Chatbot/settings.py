@@ -4,6 +4,13 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = Env()
+# .env 파일 읽어서 환경 변수 설정 부분
+env_path = BASE_DIR / ".env"
+if env_path.is_file():
+    with env_path.open("rt", encoding="utf8") as f:
+        env.read_env(f, overwrite=True)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -103,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = env.str("LANGUAGE_CODE", default="en-us")
 
 TIME_ZONE = 'UTC'
 
@@ -121,6 +128,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+OPENAI_API_KEY = env.str("OPENAI_API_KEY")
 
 # bootstrap 추천 설정
 BOOTSTRAP5 = {
