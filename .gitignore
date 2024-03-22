@@ -2,10 +2,11 @@
 .idea
 
 # Django #
+__pycache__
 *.log
 *.pot
 *.pyc
-__pycache__
+
 db.sqlite3
 media
 
