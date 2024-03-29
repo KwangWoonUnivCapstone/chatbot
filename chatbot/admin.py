@@ -1,9 +1,5 @@
 from django.contrib import admin
-from .models import LawyerChatbot
+from chatbot.models import LawyerChatBot
 
 # Register your models here.
-
-@admin.register(LawyerChatbot)
-class LawyerChatbotAdmin(admin.ModelAdmin):
-    list_display = ('user_input', 'bot_response', 'timestamp')
-
+admin.site.register(LawyerChatBot)
