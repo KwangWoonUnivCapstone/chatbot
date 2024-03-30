@@ -3,7 +3,7 @@ import openai
 from dotenv import load_dotenv
 load_dotenv()
 # OPENAI API KEY : 버전 관리에는 절대 넣지 마세요.
-openai.api_key = os.getenv("OPENAI_API_KEY") # .env 에서 설정한 key
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # 텍스트 생성 혹은 문서 요약
 response = openai.Completion.create(

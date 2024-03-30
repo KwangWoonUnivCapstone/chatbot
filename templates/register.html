@@ -71,7 +71,7 @@
 {% block content %}
 <div class="register-container">
   <div class="card">
-    <div class="card-header">Register</div>
+    <div class="card-header">회원가입</div>
     <div class="card-body">
       {% if error_message %}
         <div class="alert alert-danger" role="alert">{{ error_message }}</div>
@@ -79,22 +79,22 @@
       <form method="post">
         {% csrf_token %}
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">닉네임</label>
           <input type="text" class="form-control" id="username" name="username" required>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">이메일</label>
           <input type="text" class="form-control" id="email" name="email" required>
         </div>
         <div class="form-group">
-          <label for="password1">Password</label>
+          <label for="password1">비밀번호</label>
           <input type="password" class="form-control" id="password1" name="password1" required>
         </div>
         <div class="form-group">
-          <label for="password2">Confirm Password</label>
+          <label for="password2">비밀번호 확인</label>
           <input type="password" class="form-control" id="password2" name="password2" required>
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">계정 생성</button>
       </form>
     </div>
   </div>

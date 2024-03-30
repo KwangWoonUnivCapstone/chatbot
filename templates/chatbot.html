@@ -67,26 +67,27 @@
 {% block content %}
 <div class="chat-container">
   <div class="card flex-grow-1">
-    <div class="card-header bg-primary text-white">Chat</div>
+    <div class="card-header bg-primary text-white">법률 문서 생성 Chatbot</div>
     {% if user.is_authenticated %}
-    <div class="card-header bg-primary text-white"><b>Welcome, {{user.username}}</b>   <a style="color: yellow;" href="logout">Logout</a></div>
+    <div class="card-header bg-primary text-white"><b>Welcome, {{user.username}} </b>   <a style="color: yellow;" href="logout">Logout</a></div>
     {% else %}
     <div class="card-header bg-primary text-white"><a style="color: yellow" href="login">Login</a>   <a style="color: yellow;" href="register">Register</a></div>
     {% endif %}
     <div class="card-body messages-box">
 
       <ul class="list-unstyled messages-list">
-
-        <!-- <li class="message received">
+        <li class="message received">
           <div class="message-text">
             <div class="message-sender">
               <b>AI Chatbot</b>
             </div>
             <div class="message-content">
-              Hi {{user.username}}, I am your AI Chatbot, you can ask me anything.
+              안녕하세요! {{user.username}}님, 저는 법률 문서 생성을 위한 챗봇입니다. 어떤 도움이 필요하신가요?
+                저에게 원하는 법률 문서의 종류나 목적을 말씀해주시면, 필요한 정보를 바탕으로 문서를 작성해 드릴 수 있습니다.
+                또는 궁굼한 점이나 필요한 부분이 있으신가요?
             </div>
           </div>
-        </li> -->
+        </li>
 
         {% for chat in chats %}
           {% if chat.user == request.user %}
@@ -127,10 +128,10 @@
     {%csrf_token%}
     <div class="input-group">
         <label>
-            <input type="text" class="form-control message-input" placeholder="Type your message...">
+            <input type="text" class="form-control message-input" placeholder="내용을 입력하세요...">
         </label>
         <div class="input-group-append">
-        <button type="submit" class="btn btn-primary btn-send">Send</button>
+        <button type="submit" class="btn btn-primary btn-send">전송</button>
       </div>
     </div>
   </form>

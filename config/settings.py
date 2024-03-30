@@ -1,7 +1,5 @@
 from environ import Env
 from pathlib import Path
-import os
-
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 #
 # import django
@@ -12,25 +10,22 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = Env()
-# .env 파일 읽어서 환경 변수 설정 부분
+# .env 경로에 파일이 있으면, 환경변수로서 읽어들입니다.
 env_path = BASE_DIR / ".env"
 if env_path.is_file():
     with env_path.open("rt", encoding="utf8") as f:
         env.read_env(f, overwrite=True)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*&h2y9$_r&$+5#7-n2psdg59_guo$zr_u6z62a5*m%f0k$b$c+'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] # 배포 시 설정
+# 배포 시 설정
+ALLOWED_HOSTS = []
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -72,10 +67,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# environ db 적용
 # import environ
 #
 # env = environ.Env()
@@ -93,8 +84,6 @@ DATABASES = {
 }
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -111,8 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 LANGUAGE_CODE = env.str("LANGUAGE_CODE", default="en-us")
 
 TIME_ZONE = 'UTC'
@@ -122,16 +109,12 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
 
-
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# OpenAi API Key
 OPENAI_API_KEY = env.str("OPENAI_API_KEY")
 
 # bootstrap 추천 설정
